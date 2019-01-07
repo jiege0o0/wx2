@@ -1,0 +1,1 @@
+var egret = window.egret;console.log('load finish')
