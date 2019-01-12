@@ -68,40 +68,40 @@ const Util = {
         return data;
     },
 
-	/** 以下为缓存相关 ******************************************************************************/
-
-	initCache:(param)=>{
-		if(param.c_cat) Util.c_cat = param.c_cat;
-		//console.log(Util.q_queen);
-	},
-
-	/*cache_title:[],
-	cache_getLevelByExp: (total)=>{
-		total = Number(total);
-		let cache_title = Util.cache_title;
-		var maxLv = cache_title.length;
-		for(var level = maxLv - 1;level>=0;level--){
-			if(cache_title[level] && total >= cache_title[level]["point"]){
-				return  cache_title[level];
-			}
-		}
-		return null;
-	}*/
-c_cat:{},
-	getCatName: (id)=>{
-		let item = Util.c_cat[id];
-		if(item){
-			return item.pigname;
-		}
-		return "";
-	},
-	getCatTitleBg: (id)=>{
-		let item = Util.c_cat[id];
-		if(item){
-			return item.titlebg;
-		}
-		return "";
-	}
+	addNumSeparator:(num,len)=>{
+        var s = String(num);
+        
+        var ss="";
+        
+        if(s.length<=3)
+        {
+            ss = s;
+        }
+        
+        while (s.length>3) {
+            
+            ss = (ss=="") ? s.substr(-3): s.substr(-3) + "," + ss;
+            
+            s = s.substr(0,s.length-3);
+            
+            if(s.length<=3)
+            {
+                ss = s + "," + ss;
+            }
+        }
+        if(len)
+        {
+            var arr = ss.split(',');
+            if(arr.length > len)
+            {
+                var index = arr.length - len;
+                arr.length = len;
+                ss = arr.join(',')+ ['K','M','G','T'][index-1];
+            }
+        }
+        
+        return ss;
+    }
 
 }
 module.exports = Util;

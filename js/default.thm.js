@@ -2379,25 +2379,10 @@ var egret = window.egret;
 	__extends(PKCardInfoSkin, _super);
 	function PKCardInfoSkin() {
 		_super.call(this);
-		this.skinParts = ["type","nameText","bg","img","cardGroup","desText","list1","line","list2","group","teamIcon"];
+		this.skinParts = ["type","nameText","bg","cardGroup","desText","list","teamIcon"];
 		
-		this.currentState = "normal";
 		this.width = 560;
-		this.elementsContent = [this._Image1_i(),this._Group1_i(),this.cardGroup_i(),this._Group2_i(),this.group_i(),this.teamIcon_i()];
-		this.states = [
-			new eui.State ("normal",
-				[
-				])
-			,
-			new eui.State ("window",
-				[
-					new eui.SetProperty("nameText","size",28),
-					new eui.SetProperty("nameText","textColor",0xfce6ba),
-					new eui.SetProperty("nameText","stroke",2),
-					new eui.SetProperty("nameText","strokeColor",0x230b00),
-					new eui.SetProperty("group","bottom",200)
-				])
-		];
+		this.elementsContent = [this._Image1_i(),this._Group1_i(),this.cardGroup_i(),this._Group2_i(),this.list_i(),this.teamIcon_i()];
 	}
 	var _proto = PKCardInfoSkin.prototype;
 
@@ -2451,39 +2436,29 @@ var egret = window.egret;
 	_proto.cardGroup_i = function () {
 		var t = new eui.Group();
 		this.cardGroup = t;
-		t.height = 164;
-		t.width = 144;
+		t.height = 180;
+		t.scrollEnabled = true;
+		t.width = 150;
 		t.x = 20;
 		t.y = 20;
-		t.elementsContent = [this.bg_i(),this.img_i()];
+		t.elementsContent = [this.bg_i()];
 		return t;
 	};
 	_proto.bg_i = function () {
 		var t = new eui.Image();
 		this.bg = t;
-		t.bottom = 0;
-		t.left = 0;
-		t.right = 0;
+		t.bottom = -80;
+		t.horizontalCenter = 0;
 		t.scale9Grid = new egret.Rectangle(12,12,76,76);
 		t.source = "border_8_png";
-		t.top = 0;
-		return t;
-	};
-	_proto.img_i = function () {
-		var t = new CardImg();
-		this.img = t;
-		t.height = 154;
-		t.horizontalCenter = 0;
-		t.verticalCenter = 0;
-		t.width = 134;
 		return t;
 	};
 	_proto._Group2_i = function () {
 		var t = new eui.Group();
-		t.height = 110;
+		t.height = 130;
 		t.left = 180;
 		t.right = 20;
-		t.y = 66.12;
+		t.y = 70;
 		t.elementsContent = [this._Image2_i(),this.desText_i()];
 		return t;
 	};
@@ -2509,54 +2484,16 @@ var egret = window.egret;
 		t.top = 10;
 		return t;
 	};
-	_proto.group_i = function () {
-		var t = new eui.Group();
-		this.group = t;
-		t.bottom = 30;
-		t.horizontalCenter = 0;
-		t.top = 200;
-		t.layout = this._VerticalLayout1_i();
-		t.elementsContent = [this.list1_i(),this.line_i(),this.list2_i()];
-		return t;
-	};
-	_proto._VerticalLayout1_i = function () {
-		var t = new eui.VerticalLayout();
-		t.gap = 10;
-		return t;
-	};
-	_proto.list1_i = function () {
+	_proto.list_i = function () {
 		var t = new eui.List();
-		this.list1 = t;
-		t.x = -3.552713678800501e-15;
-		t.y = 0;
+		this.list = t;
+		t.bottom = 20;
+		t.horizontalCenter = 0;
+		t.top = 220;
 		t.layout = this._TileLayout1_i();
 		return t;
 	};
 	_proto._TileLayout1_i = function () {
-		var t = new eui.TileLayout();
-		t.horizontalGap = 6;
-		t.requestedColumnCount = 2;
-		return t;
-	};
-	_proto.line_i = function () {
-		var t = new eui.Rect();
-		this.line = t;
-		t.fillColor = 0x4f2a07;
-		t.height = 2;
-		t.percentWidth = 100;
-		t.x = 44;
-		t.y = 6;
-		return t;
-	};
-	_proto.list2_i = function () {
-		var t = new eui.List();
-		this.list2 = t;
-		t.x = 9.999999999999943;
-		t.y = 10.000000000000028;
-		t.layout = this._TileLayout2_i();
-		return t;
-	};
-	_proto._TileLayout2_i = function () {
 		var t = new eui.TileLayout();
 		t.horizontalGap = 6;
 		t.requestedColumnCount = 2;
@@ -2575,266 +2512,206 @@ var egret = window.egret;
 	__extends(CardInfoUISkin, _super);
 	function CardInfoUISkin() {
 		_super.call(this);
-		this.skinParts = ["item","leftBtn","rightBtn","helpBtn","likeCB","likeBar","likeText","unlikeCB","unlikeBar","unlikeText","r0","r1","closeBtn","coinText","icon","okBtn"];
+		this.skinParts = ["item","closeBtn"];
 		
-		this.elementsContent = [this._Group7_i(),this.closeBtn_i()];
-		this.leftBtn_i();
-		
-		this.rightBtn_i();
-		
-		this._Group5_i();
-		
-		this._Group6_i();
-		
-		this._Group9_i();
-		
-		this.states = [
-			new eui.State ("normal",
-				[
-					new eui.AddItems("leftBtn","_Group7",2,"helpBtn"),
-					new eui.AddItems("rightBtn","_Group7",2,"helpBtn"),
-					new eui.AddItems("_Group5","_Group7",1,""),
-					new eui.AddItems("_Group6","_Group7",1,"")
-				])
-			,
-			new eui.State ("buy",
-				[
-					new eui.AddItems("leftBtn","_Group7",2,"helpBtn"),
-					new eui.AddItems("rightBtn","_Group7",2,"helpBtn"),
-					new eui.AddItems("_Group5","_Group7",1,""),
-					new eui.AddItems("_Group6","_Group7",1,""),
-					new eui.AddItems("_Group9","",1,""),
-					new eui.SetProperty("_Group7","bottom",95)
-				])
-			,
-			new eui.State ("view",
-				[
-					new eui.SetProperty("item","currentState","normal")
-				])
-		];
+		this.height = 640;
+		this.elementsContent = [this._Group5_i(),this.closeBtn_i()];
 	}
 	var _proto = CardInfoUISkin.prototype;
 
-	_proto._Group7_i = function () {
+	_proto._Group5_i = function () {
 		var t = new eui.Group();
-		this._Group7 = t;
 		t.bottom = 0;
 		t.top = 0;
 		t.x = 0;
-		t.elementsContent = [this.item_i(),this.helpBtn_i()];
+		t.elementsContent = [this.item_i(),this._Group4_i()];
 		return t;
 	};
 	_proto.item_i = function () {
 		var t = new PKCardInfoUI();
 		this.item = t;
-		t.currentState = "window";
-		t.minHeight = 560;
-		t.skinName = "PKCardInfoSkin";
-		t.x = 0;
-		t.y = 0;
-		return t;
-	};
-	_proto.leftBtn_i = function () {
-		var t = new eui.Image();
-		this.leftBtn = t;
-		t.bottom = 20;
-		t.left = 22;
-		t.scaleX = -0.8;
-		t.scaleY = 0.8;
-		t.source = "arrow1_png";
-		return t;
-	};
-	_proto.rightBtn_i = function () {
-		var t = new eui.Image();
-		this.rightBtn = t;
-		t.bottom = 20;
-		t.right = 20;
-		t.scaleX = 0.8;
-		t.scaleY = 0.8;
-		t.source = "arrow1_png";
-		t.x = 10;
-		return t;
-	};
-	_proto.helpBtn_i = function () {
-		var t = new eui.Image();
-		this.helpBtn = t;
-		t.scaleX = 0.9;
-		t.scaleY = 0.9;
-		t.source = "icon_help_png";
-		t.x = 501;
-		t.y = 10;
-		return t;
-	};
-	_proto._Group5_i = function () {
-		var t = new eui.Group();
-		this._Group5 = t;
-		t.bottom = 85;
-		t.height = 100;
-		t.horizontalCenter = 0;
-		t.width = 510;
-		t.elementsContent = [this._Image1_i(),this._Group2_i(),this._Group4_i()];
-		return t;
-	};
-	_proto._Image1_i = function () {
-		var t = new eui.Image();
 		t.bottom = 0;
+		t.currentState = "window";
 		t.left = 0;
+		t.minHeight = 560;
 		t.right = 0;
-		t.scale9Grid = new egret.Rectangle(9,9,11,10);
-		t.scaleX = 1;
-		t.scaleY = 1;
-		t.source = "bg11_png";
+		t.skinName = "PKCardInfoSkin";
 		t.top = 0;
-		return t;
-	};
-	_proto._Group2_i = function () {
-		var t = new eui.Group();
-		t.x = 15;
-		t.y = 10;
-		t.elementsContent = [this._Image2_i(),this.likeCB_i(),this._Group1_i()];
-		return t;
-	};
-	_proto._Image2_i = function () {
-		var t = new eui.Image();
-		t.source = "icon_like_png";
-		t.verticalCenter = 0;
-		t.x = 0;
-		return t;
-	};
-	_proto.likeCB_i = function () {
-		var t = new eui.CheckBox();
-		this.likeCB = t;
-		t.label = "推荐使用";
-		t.skinName = "MyCheckBoxSkin";
-		t.x = 40;
-		t.y = 0;
-		return t;
-	};
-	_proto._Group1_i = function () {
-		var t = new eui.Group();
-		t.verticalCenter = 0;
-		t.x = 200;
-		t.layout = this._HorizontalLayout1_i();
-		t.elementsContent = [this.likeBar_i(),this.likeText_i()];
-		return t;
-	};
-	_proto._HorizontalLayout1_i = function () {
-		var t = new eui.HorizontalLayout();
-		t.verticalAlign = "middle";
-		return t;
-	};
-	_proto.likeBar_i = function () {
-		var t = new eui.Rect();
-		this.likeBar = t;
-		t.fillColor = 0x12562b;
-		t.height = 20;
-		t.width = 200;
-		t.x = 195;
-		t.y = 3;
-		return t;
-	};
-	_proto.likeText_i = function () {
-		var t = new eui.Label();
-		this.likeText = t;
-		t.bold = true;
-		t.size = 26;
-		t.stroke = 1;
-		t.strokeColor = 0x022602;
-		t.text = "10000";
-		t.textColor = 0x09eb0d;
-		t.x = 0;
-		t.y = 0;
 		return t;
 	};
 	_proto._Group4_i = function () {
 		var t = new eui.Group();
-		t.x = 15;
-		t.y = 55;
-		t.elementsContent = [this._Image3_i(),this.unlikeCB_i(),this._Group3_i()];
+		t.bottom = 40;
+		t.horizontalCenter = 0;
+		t.layout = this._VerticalLayout1_i();
+		t.elementsContent = [this._Group1_i(),this._Group2_i(),this._Group3_i()];
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 6;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.x = 0;
+		t.y = 0;
+		t.layout = this._HorizontalLayout1_i();
+		t.elementsContent = [this._Image1_i(),this._Image2_i(),this._Label1_i(),this._Image3_i(),this._Image4_i()];
+		return t;
+	};
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 10;
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_type1_png";
+		t.x = 0;
+		t.y = 1;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.source = "arrow2_png";
+		t.x = 78;
+		t.y = 10;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.text = "克制";
+		t.textColor = 0xfcde83;
+		t.x = 107;
+		t.y = 1;
 		return t;
 	};
 	_proto._Image3_i = function () {
 		var t = new eui.Image();
-		t.source = "icon_unlike_png";
-		t.verticalCenter = 0;
-		t.x = 0;
-		return t;
-	};
-	_proto.unlikeCB_i = function () {
-		var t = new eui.CheckBox();
-		this.unlikeCB = t;
-		t.label = "不推荐用";
-		t.skinName = "MyCheckBoxSkin";
-		t.x = 40;
+		t.source = "arrow2_png";
+		t.x = 68;
 		t.y = 0;
 		return t;
 	};
-	_proto._Group3_i = function () {
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_type2_png";
+		t.x = 10;
+		t.y = 11;
+		return t;
+	};
+	_proto._Group2_i = function () {
 		var t = new eui.Group();
-		t.x = 200;
+		t.x = 10;
+		t.y = 10;
 		t.layout = this._HorizontalLayout2_i();
-		t.elementsContent = [this.unlikeBar_i(),this.unlikeText_i()];
+		t.elementsContent = [this._Image5_i(),this._Image6_i(),this._Label2_i(),this._Image7_i(),this._Image8_i()];
 		return t;
 	};
 	_proto._HorizontalLayout2_i = function () {
 		var t = new eui.HorizontalLayout();
+		t.gap = 10;
 		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto.unlikeBar_i = function () {
-		var t = new eui.Rect();
-		this.unlikeBar = t;
-		t.fillColor = 0x5b1212;
-		t.height = 20;
-		t.width = 200;
-		t.x = 195;
-		t.y = 3;
+	_proto._Image5_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_type2_png";
+		t.x = 0;
+		t.y = 1;
 		return t;
 	};
-	_proto.unlikeText_i = function () {
+	_proto._Image6_i = function () {
+		var t = new eui.Image();
+		t.source = "arrow2_png";
+		t.x = 78;
+		t.y = 10;
+		return t;
+	};
+	_proto._Label2_i = function () {
 		var t = new eui.Label();
-		this.unlikeText = t;
-		t.bold = true;
-		t.size = 26;
-		t.stroke = 1;
-		t.strokeColor = 0x022602;
-		t.text = "10000";
-		t.textColor = 0xff0202;
-		t.x = 0;
+		t.text = "克制";
+		t.textColor = 0xfcde83;
+		t.x = 107;
+		t.y = 1;
+		return t;
+	};
+	_proto._Image7_i = function () {
+		var t = new eui.Image();
+		t.source = "arrow2_png";
+		t.x = 68;
 		t.y = 0;
 		return t;
 	};
-	_proto._Group6_i = function () {
+	_proto._Image8_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_type3_png";
+		t.x = 10;
+		t.y = 11;
+		return t;
+	};
+	_proto._Group3_i = function () {
 		var t = new eui.Group();
-		this._Group6 = t;
-		t.bottom = 32;
-		t.horizontalCenter = 0;
+		t.x = 20;
+		t.y = 20;
 		t.layout = this._HorizontalLayout3_i();
-		t.elementsContent = [this.r0_i(),this.r1_i()];
+		t.elementsContent = [this._Image9_i(),this._Image10_i(),this._Label3_i(),this._Image11_i(),this._Image12_i()];
 		return t;
 	};
 	_proto._HorizontalLayout3_i = function () {
 		var t = new eui.HorizontalLayout();
+		t.gap = 10;
+		t.verticalAlign = "middle";
 		return t;
 	};
-	_proto.r0_i = function () {
-		var t = new eui.RadioButton();
-		this.r0 = t;
-		t.label = "显示基础属性";
-		t.skinName = "MyRadioButtonSkin";
-		t.width = 180;
+	_proto._Image9_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_type3_png";
 		t.x = 0;
+		t.y = 1;
+		return t;
+	};
+	_proto._Image10_i = function () {
+		var t = new eui.Image();
+		t.source = "arrow2_png";
+		t.x = 78;
+		t.y = 10;
+		return t;
+	};
+	_proto._Label3_i = function () {
+		var t = new eui.Label();
+		t.text = "克制";
+		t.textColor = 0xfcde83;
+		t.x = 107;
+		t.y = 1;
+		return t;
+	};
+	_proto._Image11_i = function () {
+		var t = new eui.Image();
+		t.source = "arrow2_png";
+		t.x = 68;
 		t.y = 0;
 		return t;
 	};
-	_proto.r1_i = function () {
-		var t = new eui.RadioButton();
-		this.r1 = t;
-		t.label = "显示战斗属性";
-		t.skinName = "MyRadioButtonSkin";
-		t.width = 180;
+	_proto._Image12_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_type1_png";
 		t.x = 10;
-		t.y = 10;
+		t.y = 11;
 		return t;
 	};
 	_proto.closeBtn_i = function () {
@@ -2843,71 +2720,6 @@ var egret = window.egret;
 		t.bottom = -45;
 		t.horizontalCenter = 0;
 		t.source = "close_btn2_png";
-		return t;
-	};
-	_proto._Group9_i = function () {
-		var t = new eui.Group();
-		this._Group9 = t;
-		t.bottom = 0;
-		t.height = 90;
-		t.percentWidth = 100;
-		t.x = 0;
-		t.elementsContent = [this._Image4_i(),this._Group8_i(),this.okBtn_i()];
-		return t;
-	};
-	_proto._Image4_i = function () {
-		var t = new eui.Image();
-		t.percentHeight = 100;
-		t.scale9Grid = new egret.Rectangle(26,25,6,7);
-		t.source = "bg13_png";
-		t.percentWidth = 100;
-		t.x = 0;
-		t.y = 0;
-		return t;
-	};
-	_proto._Group8_i = function () {
-		var t = new eui.Group();
-		t.verticalCenter = 2;
-		t.x = 80;
-		t.elementsContent = [this._Image5_i(),this.coinText_i(),this.icon_i()];
-		return t;
-	};
-	_proto._Image5_i = function () {
-		var t = new eui.Image();
-		t.scale9Grid = new egret.Rectangle(28,20,26,2);
-		t.source = "border1_png";
-		t.width = 220;
-		t.x = 0;
-		t.y = 0;
-		return t;
-	};
-	_proto.coinText_i = function () {
-		var t = new eui.Label();
-		this.coinText = t;
-		t.size = 24;
-		t.text = "1012345";
-		t.x = 48;
-		t.y = 9;
-		return t;
-	};
-	_proto.icon_i = function () {
-		var t = new eui.Image();
-		this.icon = t;
-		t.height = 46;
-		t.source = "icon_coin_png";
-		t.width = 46;
-		t.x = 0;
-		t.y = -3.5;
-		return t;
-	};
-	_proto.okBtn_i = function () {
-		var t = new eui.Button();
-		this.okBtn = t;
-		t.label = "开启";
-		t.skinName = "Btn1Skin";
-		t.verticalCenter = 0;
-		t.width = 150;
-		t.x = 320;
 		return t;
 	};
 	return CardInfoUISkin;
@@ -3578,11 +3390,11 @@ var egret = window.egret;
 	__extends(MainPKUISkin, _super);
 	function MainPKUISkin() {
 		_super.call(this);
-		this.skinParts = ["con","list","scroller","winText","des1","des2","desGroup","winGroup","failText","failGroup"];
+		this.skinParts = ["con","list1","lineMC","list2","scroller","teamCost1Text","cost1Text","cost1Group","costText2","cost2Group","forceText1","teamCost2Text","forceText2","timeText","winText","des1","des2","desGroup","winGroup","failText","failGroup","backBtn","replayBtn","btnGroup"];
 		
 		this.height = 800;
 		this.width = 640;
-		this.elementsContent = [this._Image1_i(),this.con_i(),this._Image2_i(),this._Image3_i(),this.scroller_i(),this.winGroup_i(),this.failGroup_i()];
+		this.elementsContent = [this._Image1_i(),this.con_i(),this._Image2_i(),this._Image3_i(),this.scroller_i(),this._Image4_i(),this._Image5_i(),this._Group2_i(),this.cost1Group_i(),this.cost2Group_i(),this._Group5_i(),this._Group6_i(),this._Group7_i(),this._Group8_i(),this.winGroup_i(),this.failGroup_i(),this.btnGroup_i()];
 	}
 	var _proto = MainPKUISkin.prototype;
 
@@ -3626,8 +3438,9 @@ var egret = window.egret;
 	_proto.scroller_i = function () {
 		var t = new eui.Scroller();
 		this.scroller = t;
-		t.bottom = 0;
-		t.top = 512;
+		t.bottom = 5;
+		t.bounces = false;
+		t.top = 520;
 		t.width = 640;
 		t.x = 0;
 		t.viewport = this._Group1_i();
@@ -3635,16 +3448,319 @@ var egret = window.egret;
 	};
 	_proto._Group1_i = function () {
 		var t = new eui.Group();
-		t.elementsContent = [this.list_i()];
+		t.layout = this._HorizontalLayout1_i();
+		t.elementsContent = [this.list1_i(),this.lineMC_i(),this.list2_i()];
 		return t;
 	};
-	_proto.list_i = function () {
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 10;
+		t.horizontalAlign = "center";
+		t.paddingBottom = 10;
+		t.paddingTop = 10;
+		return t;
+	};
+	_proto.list1_i = function () {
 		var t = new eui.List();
-		this.list = t;
-		t.height = 200;
-		t.width = 200;
-		t.x = 155;
-		t.y = 118;
+		this.list1 = t;
+		t.width = 297;
+		t.x = 67;
+		t.y = 43;
+		t.layout = this._TileLayout1_i();
+		return t;
+	};
+	_proto._TileLayout1_i = function () {
+		var t = new eui.TileLayout();
+		t.requestedColumnCount = 3;
+		return t;
+	};
+	_proto.lineMC_i = function () {
+		var t = new eui.Rect();
+		this.lineMC = t;
+		t.fillColor = 0x4c2904;
+		t.height = 100;
+		t.width = 2;
+		t.x = 242;
+		t.y = 146;
+		return t;
+	};
+	_proto.list2_i = function () {
+		var t = new eui.List();
+		this.list2 = t;
+		t.width = 297;
+		t.x = 67;
+		t.y = 43;
+		t.layout = this._TileLayout2_i();
+		return t;
+	};
+	_proto._TileLayout2_i = function () {
+		var t = new eui.TileLayout();
+		t.requestedColumnCount = 3;
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.height = 110;
+		t.source = "black_bg2_png";
+		t.width = 310;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image5_i = function () {
+		var t = new eui.Image();
+		t.height = 110;
+		t.right = 0;
+		t.scaleX = -1;
+		t.source = "black_bg2_png";
+		t.width = 310;
+		t.y = 0;
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.x = 10;
+		t.y = 10;
+		t.layout = this._HorizontalLayout2_i();
+		t.elementsContent = [this._Image6_i(),this.teamCost1Text_i()];
+		return t;
+	};
+	_proto._HorizontalLayout2_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image6_i = function () {
+		var t = new eui.Image();
+		t.source = "icon_coin_png";
+		t.x = 0;
+		t.y = 1.5;
+		return t;
+	};
+	_proto.teamCost1Text_i = function () {
+		var t = new eui.Label();
+		this.teamCost1Text = t;
+		t.text = "Label";
+		t.textColor = 0xffe2a5;
+		t.x = 49;
+		t.y = 0;
+		return t;
+	};
+	_proto.cost1Group_i = function () {
+		var t = new eui.Group();
+		this.cost1Group = t;
+		t.x = 0;
+		t.y = 472;
+		t.elementsContent = [this._Image7_i(),this._Group3_i()];
+		return t;
+	};
+	_proto._Image7_i = function () {
+		var t = new eui.Image();
+		t.height = 40;
+		t.source = "black_bg2_png";
+		t.width = 320;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Group3_i = function () {
+		var t = new eui.Group();
+		t.verticalCenter = 0;
+		t.x = 5;
+		t.layout = this._HorizontalLayout3_i();
+		t.elementsContent = [this._Image8_i(),this.cost1Text_i()];
+		return t;
+	};
+	_proto._HorizontalLayout3_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image8_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_coin_png";
+		t.x = 0;
+		t.y = 1.5;
+		return t;
+	};
+	_proto.cost1Text_i = function () {
+		var t = new eui.Label();
+		this.cost1Text = t;
+		t.size = 24;
+		t.stroke = 3;
+		t.text = "Label";
+		t.textColor = 0xffe2a5;
+		t.x = 49;
+		t.y = 0;
+		return t;
+	};
+	_proto.cost2Group_i = function () {
+		var t = new eui.Group();
+		this.cost2Group = t;
+		t.right = 0;
+		t.y = 472;
+		t.elementsContent = [this._Image9_i(),this._Group4_i()];
+		return t;
+	};
+	_proto._Image9_i = function () {
+		var t = new eui.Image();
+		t.height = 40;
+		t.right = 0;
+		t.scaleX = -1;
+		t.source = "black_bg2_png";
+		t.width = 320;
+		t.y = 0;
+		return t;
+	};
+	_proto._Group4_i = function () {
+		var t = new eui.Group();
+		t.right = 5;
+		t.verticalCenter = 0;
+		t.layout = this._HorizontalLayout4_i();
+		t.elementsContent = [this.costText2_i(),this._Image10_i()];
+		return t;
+	};
+	_proto._HorizontalLayout4_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.costText2_i = function () {
+		var t = new eui.Label();
+		this.costText2 = t;
+		t.size = 24;
+		t.stroke = 3;
+		t.text = "Label";
+		t.textColor = 0xFFE2A5;
+		t.x = 49;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image10_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_coin_png";
+		t.x = 0;
+		t.y = 1.5;
+		return t;
+	};
+	_proto._Group5_i = function () {
+		var t = new eui.Group();
+		t.x = 10;
+		t.y = 60;
+		t.layout = this._HorizontalLayout5_i();
+		t.elementsContent = [this._Image11_i(),this.forceText1_i()];
+		return t;
+	};
+	_proto._HorizontalLayout5_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image11_i = function () {
+		var t = new eui.Image();
+		t.source = "icon_force2_png";
+		t.x = 0;
+		t.y = 1.5;
+		return t;
+	};
+	_proto.forceText1_i = function () {
+		var t = new eui.Label();
+		this.forceText1 = t;
+		t.size = 24;
+		t.text = "Label";
+		t.textColor = 0xffe2a5;
+		t.x = 49;
+		t.y = 0;
+		return t;
+	};
+	_proto._Group6_i = function () {
+		var t = new eui.Group();
+		t.right = 10;
+		t.y = 10;
+		t.layout = this._HorizontalLayout6_i();
+		t.elementsContent = [this.teamCost2Text_i(),this._Image12_i()];
+		return t;
+	};
+	_proto._HorizontalLayout6_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.teamCost2Text_i = function () {
+		var t = new eui.Label();
+		this.teamCost2Text = t;
+		t.text = "Label";
+		t.textColor = 0xffe2a5;
+		t.x = 49;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image12_i = function () {
+		var t = new eui.Image();
+		t.source = "icon_coin_png";
+		t.x = 0;
+		t.y = 1.5;
+		return t;
+	};
+	_proto._Group7_i = function () {
+		var t = new eui.Group();
+		t.right = 10;
+		t.y = 60;
+		t.layout = this._HorizontalLayout7_i();
+		t.elementsContent = [this.forceText2_i(),this._Image13_i()];
+		return t;
+	};
+	_proto._HorizontalLayout7_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.forceText2_i = function () {
+		var t = new eui.Label();
+		this.forceText2 = t;
+		t.size = 24;
+		t.text = "123";
+		t.textColor = 0xffe2a5;
+		t.x = 49;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image13_i = function () {
+		var t = new eui.Image();
+		t.source = "icon_force2_png";
+		t.x = 0;
+		t.y = 1.5;
+		return t;
+	};
+	_proto._Group8_i = function () {
+		var t = new eui.Group();
+		t.horizontalCenter = 0;
+		t.y = 5;
+		t.elementsContent = [this._Image14_i(),this.timeText_i()];
+		return t;
+	};
+	_proto._Image14_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.9;
+		t.scaleY = 0.9;
+		t.source = "main_button_png";
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.timeText_i = function () {
+		var t = new eui.Label();
+		this.timeText = t;
+		t.bold = true;
+		t.horizontalCenter = 0;
+		t.size = 40;
+		t.text = "123";
+		t.textColor = 0xfccd7e;
+		t.verticalCenter = -2;
 		return t;
 	};
 	_proto.winGroup_i = function () {
@@ -3653,31 +3769,32 @@ var egret = window.egret;
 		t.anchorOffsetY = 130;
 		t.height = 265;
 		t.horizontalCenter = 0;
+		t.visible = false;
 		t.y = 180;
-		t.elementsContent = [this._Group2_i(),this.winText_i(),this.desGroup_i()];
+		t.elementsContent = [this._Group9_i(),this.winText_i(),this.desGroup_i()];
 		return t;
 	};
-	_proto._Group2_i = function () {
+	_proto._Group9_i = function () {
 		var t = new eui.Group();
 		t.x = 0;
 		t.y = 0;
-		t.layout = this._HorizontalLayout1_i();
-		t.elementsContent = [this._Image4_i(),this._Image5_i()];
+		t.layout = this._HorizontalLayout8_i();
+		t.elementsContent = [this._Image15_i(),this._Image16_i()];
 		return t;
 	};
-	_proto._HorizontalLayout1_i = function () {
+	_proto._HorizontalLayout8_i = function () {
 		var t = new eui.HorizontalLayout();
 		t.gap = 0;
 		return t;
 	};
-	_proto._Image4_i = function () {
+	_proto._Image15_i = function () {
 		var t = new eui.Image();
 		t.source = "pk_win_png";
 		t.x = 0;
 		t.y = 0;
 		return t;
 	};
-	_proto._Image5_i = function () {
+	_proto._Image16_i = function () {
 		var t = new eui.Image();
 		t.scaleX = -1;
 		t.source = "pk_win_png";
@@ -3688,10 +3805,10 @@ var egret = window.egret;
 	_proto.winText_i = function () {
 		var t = new eui.Label();
 		this.winText = t;
+		t.horizontalCenter = 0;
 		t.strokeColor = 0xFFFFFF;
 		t.text = "挑战成功";
 		t.textColor = 0xFCE492;
-		t.x = 190;
 		t.y = 118;
 		return t;
 	};
@@ -3700,11 +3817,29 @@ var egret = window.egret;
 		this.desGroup = t;
 		t.horizontalCenter = 0;
 		t.y = 288;
-		t.layout = this._HorizontalLayout2_i();
-		t.elementsContent = [this.des1_i(),this._Image6_i(),this.des2_i()];
+		t.elementsContent = [this._Image17_i(),this._Group10_i()];
 		return t;
 	};
-	_proto._HorizontalLayout2_i = function () {
+	_proto._Image17_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.scale9Grid = new egret.Rectangle(43,7,8,42);
+		t.source = "black_bg_png";
+		t.top = 0;
+		return t;
+	};
+	_proto._Group10_i = function () {
+		var t = new eui.Group();
+		t.left = 30;
+		t.right = 30;
+		t.verticalCenter = 0;
+		t.layout = this._HorizontalLayout9_i();
+		t.elementsContent = [this.des1_i(),this._Image18_i(),this.des2_i()];
+		return t;
+	};
+	_proto._HorizontalLayout9_i = function () {
 		var t = new eui.HorizontalLayout();
 		t.verticalAlign = "middle";
 		return t;
@@ -3718,7 +3853,7 @@ var egret = window.egret;
 		t.y = 12;
 		return t;
 	};
-	_proto._Image6_i = function () {
+	_proto._Image18_i = function () {
 		var t = new eui.Image();
 		t.source = "icon_coin_png";
 		t.x = 0;
@@ -3740,31 +3875,32 @@ var egret = window.egret;
 		t.anchorOffsetY = 130;
 		t.height = 265;
 		t.horizontalCenter = 0;
+		t.visible = false;
 		t.y = 180;
-		t.elementsContent = [this._Group3_i(),this.failText_i()];
+		t.elementsContent = [this._Group11_i(),this.failText_i()];
 		return t;
 	};
-	_proto._Group3_i = function () {
+	_proto._Group11_i = function () {
 		var t = new eui.Group();
 		t.x = 0;
 		t.y = 0;
-		t.layout = this._HorizontalLayout3_i();
-		t.elementsContent = [this._Image7_i(),this._Image8_i()];
+		t.layout = this._HorizontalLayout10_i();
+		t.elementsContent = [this._Image19_i(),this._Image20_i()];
 		return t;
 	};
-	_proto._HorizontalLayout3_i = function () {
+	_proto._HorizontalLayout10_i = function () {
 		var t = new eui.HorizontalLayout();
 		t.gap = 0;
 		return t;
 	};
-	_proto._Image7_i = function () {
+	_proto._Image19_i = function () {
 		var t = new eui.Image();
 		t.source = "pk_fail_png";
 		t.x = 0;
 		t.y = 0;
 		return t;
 	};
-	_proto._Image8_i = function () {
+	_proto._Image20_i = function () {
 		var t = new eui.Image();
 		t.scaleX = -1;
 		t.source = "pk_fail_png";
@@ -3775,10 +3911,44 @@ var egret = window.egret;
 	_proto.failText_i = function () {
 		var t = new eui.Label();
 		this.failText = t;
+		t.horizontalCenter = 0;
 		t.stroke = 3;
 		t.text = "挑战失败";
-		t.x = 190;
 		t.y = 119;
+		return t;
+	};
+	_proto.btnGroup_i = function () {
+		var t = new eui.Group();
+		this.btnGroup = t;
+		t.horizontalCenter = 0;
+		t.y = 410;
+		t.layout = this._HorizontalLayout11_i();
+		t.elementsContent = [this.backBtn_i(),this.replayBtn_i()];
+		return t;
+	};
+	_proto._HorizontalLayout11_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 30;
+		return t;
+	};
+	_proto.backBtn_i = function () {
+		var t = new eui.Button();
+		this.backBtn = t;
+		t.label = "关闭";
+		t.skinName = "Btn2Skin";
+		t.width = 150;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.replayBtn_i = function () {
+		var t = new eui.Button();
+		this.replayBtn = t;
+		t.label = "回放";
+		t.skinName = "Btn1Skin";
+		t.width = 150;
+		t.x = 0;
+		t.y = 0;
 		return t;
 	};
 	return MainPKUISkin;
@@ -3796,12 +3966,12 @@ var egret = window.egret;
 
 	_proto._Image1_i = function () {
 		var t = new eui.Image();
-		t.bottom = 0;
-		t.left = 0;
-		t.right = 0;
-		t.scale9Grid = new egret.Rectangle(32,32,3,6);
-		t.source = "bg14_png";
-		t.top = -30;
+		t.fillMode = "repeat";
+		t.scaleY = -1;
+		t.source = "title_bg4_png";
+		t.width = 640;
+		t.x = 0;
+		t.y = 92;
 		return t;
 	};
 	_proto._Group1_i = function () {
@@ -3846,8 +4016,10 @@ var egret = window.egret;
 	_proto._Image2_i = function () {
 		var t = new eui.Image();
 		t.scale9Grid = new egret.Rectangle(28,20,26,2);
+		t.scaleX = 1.1;
+		t.scaleY = 1.1;
 		t.source = "border1_png";
-		t.width = 250;
+		t.width = 300;
 		t.x = 0;
 		t.y = 0;
 		return t;
@@ -3857,9 +4029,9 @@ var egret = window.egret;
 		this.coinText = t;
 		t.size = 24;
 		t.text = "1234567890";
-		t.verticalCenter = -3;
+		t.textColor = 0xffe3b7;
+		t.verticalCenter = -5;
 		t.x = 50;
-		t.y = 9;
 		return t;
 	};
 	_proto._Image3_i = function () {
@@ -4073,6 +4245,619 @@ var egret = window.egret;
 		return t;
 	};
 	return GameUISkin;
+})(eui.Skin);generateEUI.paths['resource/skin/game/LogItemSkin.exml'] = window.LogItemSkin = (function (_super) {
+	__extends(LogItemSkin, _super);
+	function LogItemSkin() {
+		_super.call(this);
+		this.skinParts = ["timeText","cost1","force1","myCost1","result1","cost2","force2","myCost2","result2","desText","coinText","videoBtn"];
+		
+		this.height = 410;
+		this.width = 600;
+		this.elementsContent = [this._Image1_i(),this._Group2_i(),this._Group4_i(),this._Group13_i(),this._Group14_i(),this.videoBtn_i()];
+	}
+	var _proto = LogItemSkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.percentHeight = 100;
+		t.scale9Grid = new egret.Rectangle(9,9,11,10);
+		t.source = "bg2_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.height = 50;
+		t.left = 0;
+		t.right = 0;
+		t.y = 0;
+		t.elementsContent = [this._Image2_i(),this._Group1_i()];
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.left = 5;
+		t.right = 5;
+		t.scale9Grid = new egret.Rectangle(12,12,6,5);
+		t.source = "bg9_png";
+		t.top = 5;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.horizontalCenter = 0;
+		t.y = 8;
+		t.layout = this._HorizontalLayout1_i();
+		t.elementsContent = [this._Image3_i(),this.timeText_i()];
+		return t;
+	};
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 10;
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.source = "icon_clock_png";
+		t.x = 0;
+		t.y = 6;
+		return t;
+	};
+	_proto.timeText_i = function () {
+		var t = new eui.Label();
+		this.timeText = t;
+		t.height = 40;
+		t.size = 24;
+		t.strokeColor = 0x231507;
+		t.text = "2011-12-1 11:11";
+		t.textColor = 0xdbd3c7;
+		t.verticalAlign = "middle";
+		t.x = 9;
+		t.y = 0;
+		return t;
+	};
+	_proto._Group4_i = function () {
+		var t = new eui.Group();
+		t.height = 270;
+		t.left = 10;
+		t.right = 10;
+		t.top = 60;
+		t.elementsContent = [this._Image4_i(),this._Group3_i()];
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetX = 0;
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.scale9Grid = new egret.Rectangle(19,19,9,10);
+		t.source = "bg13_png";
+		t.top = 0;
+		return t;
+	};
+	_proto._Group3_i = function () {
+		var t = new eui.Group();
+		t.x = 10;
+		t.y = 60;
+		t.layout = this._VerticalLayout1_i();
+		t.elementsContent = [this._Rect1_i(),this._Rect2_i(),this._Rect3_i(),this._Rect4_i()];
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 47;
+		return t;
+	};
+	_proto._Rect1_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xbf8a42;
+		t.height = 3;
+		t.width = 560;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Rect2_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xBF8A42;
+		t.height = 3;
+		t.width = 560;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Rect3_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xBF8A42;
+		t.height = 3;
+		t.width = 560;
+		t.x = 10;
+		t.y = 10;
+		return t;
+	};
+	_proto._Rect4_i = function () {
+		var t = new eui.Rect();
+		t.fillColor = 0xBF8A42;
+		t.height = 3;
+		t.width = 560;
+		t.x = 20;
+		t.y = 20;
+		return t;
+	};
+	_proto._Group13_i = function () {
+		var t = new eui.Group();
+		t.horizontalCenter = 0;
+		t.y = 70;
+		t.layout = this._HorizontalLayout2_i();
+		t.elementsContent = [this._Group6_i(),this._Group9_i(),this._Group12_i()];
+		return t;
+	};
+	_proto._HorizontalLayout2_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 0;
+		return t;
+	};
+	_proto._Group6_i = function () {
+		var t = new eui.Group();
+		t.height = 200;
+		t.width = 160;
+		t.x = 0;
+		t.y = 0;
+		t.layout = this._VerticalLayout2_i();
+		t.elementsContent = [this._Group5_i(),this._Label1_i(),this._Label2_i(),this._Label3_i(),this._Label4_i()];
+		return t;
+	};
+	_proto._VerticalLayout2_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 0;
+		t.horizontalAlign = "center";
+		return t;
+	};
+	_proto._Group5_i = function () {
+		var t = new eui.Group();
+		t.height = 55;
+		t.x = 0;
+		t.y = -3.03;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.height = 50;
+		t.size = 24;
+		t.text = "最终投注";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 40;
+		t.y = 54;
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		t.height = 50;
+		t.size = 24;
+		t.text = "最终战力";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 40;
+		t.y = 54;
+		return t;
+	};
+	_proto._Label3_i = function () {
+		var t = new eui.Label();
+		t.height = 50;
+		t.size = 24;
+		t.text = "我的投注";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 50;
+		t.y = 64;
+		return t;
+	};
+	_proto._Label4_i = function () {
+		var t = new eui.Label();
+		t.height = 50;
+		t.size = 24;
+		t.text = "战斗结果";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 60;
+		t.y = 74;
+		return t;
+	};
+	_proto._Group9_i = function () {
+		var t = new eui.Group();
+		t.height = 200;
+		t.width = 200;
+		t.x = 0;
+		t.y = 0;
+		t.layout = this._VerticalLayout3_i();
+		t.elementsContent = [this._Group7_i(),this.cost1_i(),this.force1_i(),this.myCost1_i(),this._Group8_i()];
+		return t;
+	};
+	_proto._VerticalLayout3_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 0;
+		t.horizontalAlign = "center";
+		return t;
+	};
+	_proto._Group7_i = function () {
+		var t = new eui.Group();
+		t.height = 55;
+		t.width = 150;
+		t.x = 0;
+		t.y = -3.03;
+		t.elementsContent = [this._Image5_i(),this._Label5_i()];
+		return t;
+	};
+	_proto._Image5_i = function () {
+		var t = new eui.Image();
+		t.source = "card_battle2_png";
+		t.verticalCenter = 0;
+		t.x = 0;
+		return t;
+	};
+	_proto._Label5_i = function () {
+		var t = new eui.Label();
+		t.size = 24;
+		t.text = "队伍1";
+		t.verticalCenter = 0;
+		t.x = 40;
+		return t;
+	};
+	_proto.cost1_i = function () {
+		var t = new eui.Label();
+		this.cost1 = t;
+		t.height = 50;
+		t.size = 24;
+		t.text = "1,000,000,000";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 40;
+		t.y = 54;
+		return t;
+	};
+	_proto.force1_i = function () {
+		var t = new eui.Label();
+		this.force1 = t;
+		t.height = 50;
+		t.size = 24;
+		t.text = "队伍1";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 40;
+		t.y = 54;
+		return t;
+	};
+	_proto.myCost1_i = function () {
+		var t = new eui.Label();
+		this.myCost1 = t;
+		t.height = 50;
+		t.size = 24;
+		t.text = "队伍1";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 50;
+		t.y = 64;
+		return t;
+	};
+	_proto._Group8_i = function () {
+		var t = new eui.Group();
+		t.height = 50;
+		t.width = 50;
+		t.x = 75;
+		t.y = 200;
+		t.elementsContent = [this.result1_i()];
+		return t;
+	};
+	_proto.result1_i = function () {
+		var t = new eui.Image();
+		this.result1 = t;
+		t.source = "win_icon_png";
+		t.x = 0;
+		return t;
+	};
+	_proto._Group12_i = function () {
+		var t = new eui.Group();
+		t.height = 200;
+		t.width = 200;
+		t.x = 0;
+		t.y = 0;
+		t.layout = this._VerticalLayout4_i();
+		t.elementsContent = [this._Group10_i(),this.cost2_i(),this.force2_i(),this.myCost2_i(),this._Group11_i()];
+		return t;
+	};
+	_proto._VerticalLayout4_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 0;
+		t.horizontalAlign = "center";
+		return t;
+	};
+	_proto._Group10_i = function () {
+		var t = new eui.Group();
+		t.height = 55;
+		t.width = 150;
+		t.x = 0;
+		t.y = -3.03;
+		t.elementsContent = [this._Image6_i(),this._Label6_i()];
+		return t;
+	};
+	_proto._Image6_i = function () {
+		var t = new eui.Image();
+		t.source = "card_battle_png";
+		t.verticalCenter = 0;
+		t.x = 0;
+		return t;
+	};
+	_proto._Label6_i = function () {
+		var t = new eui.Label();
+		t.size = 24;
+		t.text = "队伍2";
+		t.verticalCenter = 0;
+		t.x = 40;
+		return t;
+	};
+	_proto.cost2_i = function () {
+		var t = new eui.Label();
+		this.cost2 = t;
+		t.height = 50;
+		t.size = 24;
+		t.text = "队伍1";
+		t.textColor = 0x999999;
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 40;
+		t.y = 54;
+		return t;
+	};
+	_proto.force2_i = function () {
+		var t = new eui.Label();
+		this.force2 = t;
+		t.height = 50;
+		t.size = 24;
+		t.text = "队伍1";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 40;
+		t.y = 54;
+		return t;
+	};
+	_proto.myCost2_i = function () {
+		var t = new eui.Label();
+		this.myCost2 = t;
+		t.height = 50;
+		t.size = 24;
+		t.text = "队伍1";
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 50;
+		t.y = 64;
+		return t;
+	};
+	_proto._Group11_i = function () {
+		var t = new eui.Group();
+		t.height = 50;
+		t.width = 50;
+		t.x = 75;
+		t.y = 200;
+		t.elementsContent = [this.result2_i()];
+		return t;
+	};
+	_proto.result2_i = function () {
+		var t = new eui.Image();
+		this.result2 = t;
+		t.source = "lose_icon_png";
+		t.x = 0;
+		return t;
+	};
+	_proto._Group14_i = function () {
+		var t = new eui.Group();
+		t.bottom = 25;
+		t.height = 40;
+		t.x = 20;
+		t.layout = this._HorizontalLayout3_i();
+		t.elementsContent = [this.desText_i(),this._Image7_i(),this.coinText_i()];
+		return t;
+	};
+	_proto._HorizontalLayout3_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.gap = 10;
+		t.verticalAlign = "middle";
+		return t;
+	};
+	_proto.desText_i = function () {
+		var t = new eui.Label();
+		this.desText = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.bold = true;
+		t.height = 24;
+		t.lineSpacing = 5;
+		t.size = 24;
+		t.text = "1队获胜，最终收益";
+		t.textAlign = "left";
+		t.textColor = 0x512200;
+		t.verticalAlign = "middle";
+		t.x = 10;
+		t.y = 15;
+		return t;
+	};
+	_proto._Image7_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_coin_png";
+		t.x = 304;
+		t.y = 0;
+		return t;
+	};
+	_proto.coinText_i = function () {
+		var t = new eui.Label();
+		this.coinText = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.bold = true;
+		t.height = 24;
+		t.lineSpacing = 5;
+		t.size = 26;
+		t.text = "-10000";
+		t.textAlign = "left";
+		t.textColor = 0xcc0000;
+		t.verticalAlign = "middle";
+		t.x = 0;
+		t.y = 5;
+		return t;
+	};
+	_proto.videoBtn_i = function () {
+		var t = new eui.Button();
+		this.videoBtn = t;
+		t.bottom = 10;
+		t.label = "录像回放";
+		t.right = 20;
+		t.skinName = "Btn1Skin";
+		t.width = 180;
+		return t;
+	};
+	return LogItemSkin;
+})(eui.Skin);generateEUI.paths['resource/skin/game/LogUISkin.exml'] = window.LogUISkin = (function (_super) {
+	__extends(LogUISkin, _super);
+	function LogUISkin() {
+		_super.call(this);
+		this.skinParts = ["topUI","bottomUI","list","scroller","desText"];
+		
+		this.height = 960;
+		this.width = 640;
+		this.elementsContent = [this._Image1_i(),this.topUI_i(),this.bottomUI_i(),this.scroller_i(),this._Group2_i()];
+	}
+	var _proto = LogUISkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.percentHeight = 100;
+		t.scale9Grid = new egret.Rectangle(16,15,7,7);
+		t.source = "bg3_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.topUI_i = function () {
+		var t = new TopUI();
+		this.topUI = t;
+		t.skinName = "TopUISkin";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.bottomUI_i = function () {
+		var t = new BottomUI();
+		this.bottomUI = t;
+		t.bottom = 0;
+		t.skinName = "BottomUISkin";
+		t.x = 0;
+		return t;
+	};
+	_proto.scroller_i = function () {
+		var t = new eui.Scroller();
+		this.scroller = t;
+		t.bottom = 100;
+		t.bounces = false;
+		t.left = 0;
+		t.right = 0;
+		t.top = 60;
+		t.viewport = this._Group1_i();
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.elementsContent = [this.list_i()];
+		return t;
+	};
+	_proto.list_i = function () {
+		var t = new eui.List();
+		this.list = t;
+		t.height = 200;
+		t.width = 200;
+		t.x = 96;
+		t.y = 96;
+		t.layout = this._VerticalLayout1_i();
+		return t;
+	};
+	_proto._VerticalLayout1_i = function () {
+		var t = new eui.VerticalLayout();
+		t.gap = 20;
+		t.paddingBottom = 10;
+		t.paddingLeft = 20;
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.bottom = 28;
+		t.right = 20;
+		t.elementsContent = [this._Image2_i(),this.desText_i()];
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.scale9Grid = new egret.Rectangle(16,15,7,7);
+		t.source = "bg3_png";
+		t.top = 0;
+		return t;
+	};
+	_proto.desText_i = function () {
+		var t = new eui.Label();
+		this.desText = t;
+		t.bottom = 10;
+		t.left = 15;
+		t.right = 15;
+		t.size = 24;
+		t.stroke = 2;
+		t.strokeColor = 0x301200;
+		t.text = "日志只保留最近20条";
+		t.top = 10;
+		return t;
+	};
+	return LogUISkin;
+})(eui.Skin);generateEUI.paths['resource/skin/game/MainPKItemSkin.exml'] = window.MainPKItemSkin = (function (_super) {
+	__extends(MainPKItemSkin, _super);
+	function MainPKItemSkin() {
+		_super.call(this);
+		this.skinParts = ["bg","mc"];
+		
+		this.height = 95;
+		this.width = 95;
+		this.elementsContent = [this.bg_i(),this.mc_i()];
+	}
+	var _proto = MainPKItemSkin.prototype;
+
+	_proto.bg_i = function () {
+		var t = new eui.Image();
+		this.bg = t;
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.source = "border_6_png";
+		t.top = 0;
+		return t;
+	};
+	_proto.mc_i = function () {
+		var t = new eui.Image();
+		this.mc = t;
+		t.height = 80;
+		t.horizontalCenter = 0;
+		t.verticalCenter = 0;
+		t.width = 80;
+		return t;
+	};
+	return MainPKItemSkin;
 })(eui.Skin);generateEUI.paths['resource/skin/game/pk/ui/scene/PKAddStateSkin.exml'] = window.PKAddStateSkin = (function (_super) {
 	__extends(PKAddStateSkin, _super);
 	function PKAddStateSkin() {
@@ -4433,4 +5218,85 @@ var egret = window.egret;
 		return t;
 	};
 	return PKCardInfoItemSkin;
+})(eui.Skin);generateEUI.paths['resource/skin/game/RankUISkin.exml'] = window.RankUISkin = (function (_super) {
+	__extends(RankUISkin, _super);
+	function RankUISkin() {
+		_super.call(this);
+		this.skinParts = ["topUI","bottomUI","tab"];
+		
+		this.height = 960;
+		this.width = 640;
+		this.elementsContent = [this._Image1_i(),this._Image2_i(),this.topUI_i(),this.bottomUI_i(),this.tab_i()];
+	}
+	var _proto = RankUISkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.percentHeight = 100;
+		t.scale9Grid = new egret.Rectangle(16,15,7,7);
+		t.source = "bg3_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.bottom = 100;
+		t.scale9Grid = new egret.Rectangle(19,18,10,8);
+		t.source = "bg15_png";
+		t.top = 120;
+		t.width = 640;
+		t.x = 0;
+		return t;
+	};
+	_proto.topUI_i = function () {
+		var t = new TopUI();
+		this.topUI = t;
+		t.skinName = "TopUISkin";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.bottomUI_i = function () {
+		var t = new BottomUI();
+		this.bottomUI = t;
+		t.bottom = 0;
+		t.skinName = "BottomUISkin";
+		t.x = 0;
+		return t;
+	};
+	_proto.tab_i = function () {
+		var t = new eui.TabBar();
+		this.tab = t;
+		t.horizontalCenter = 0;
+		t.itemRendererSkinName = MyTabItemSkin;
+		t.width = 400;
+		t.y = 67;
+		t.layout = this._HorizontalLayout1_i();
+		t.dataProvider = this._ArrayCollection1_i();
+		return t;
+	};
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.horizontalAlign = "justify";
+		return t;
+	};
+	_proto._ArrayCollection1_i = function () {
+		var t = new eui.ArrayCollection();
+		t.source = [this._Object1_i(),this._Object2_i()];
+		return t;
+	};
+	_proto._Object1_i = function () {
+		var t = {};
+		t.label = "金币排行";
+		return t;
+	};
+	_proto._Object2_i = function () {
+		var t = {};
+		t.label = "收益排行";
+		return t;
+	};
+	return RankUISkin;
 })(eui.Skin);

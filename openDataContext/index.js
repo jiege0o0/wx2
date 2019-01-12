@@ -17,6 +17,7 @@ const util = require("util.js");
 const assetsUrl = {
   scorebg: "openDataContext/assets/scorebg.png",
   star: "openDataContext/assets/chapter_star4.png",
+  star2: "openDataContext/assets/chapter_star3.png",
   button1: "openDataContext/assets/page_last.png",
   button2: "openDataContext/assets/page_next.png"
 };
@@ -76,23 +77,25 @@ function init() {
 	canvasHeight = data.windowHeight;
 
 	wx_scale = stageWidth/640
-	rankWidth =  getV(560);
-	rankHeight = getV(720);
+	rankWidth =  getV(620);
+	
 	barWidth = rankWidth;
-	barHeight = getV(90);
-	preOffsetY = getV(90);
+	barHeight = getV(100);
+	preOffsetY = getV(100);
 	startX = 0;
 	startY = 0;
-	avatarSize = getV(70);
+	avatarSize = getV(80);
+	
+	
 
 
+	
 	//按钮绘制数据初始化
-	buttonWidth = getV(108*1.2);
-	buttonHeight = getV(52*1.2);
+	buttonWidth = getV(114*1.4);
+	buttonHeight = getV(50*1.4);
 	buttonOffset = rankWidth / 2;
-	lastButtonX = buttonOffset - buttonWidth - getV(40);
-	nextButtonX = buttonOffset + getV(40);
-	nextButtonY = lastButtonY = rankHeight - buttonHeight; 
+	lastButtonX = buttonOffset - buttonWidth - getV(50);
+	nextButtonX = buttonOffset + getV(50);
 	
 	
 }
@@ -101,14 +104,17 @@ function init() {
  * 创建两个点击按钮
  */
 function drawButton() {
+
+	nextButtonY = lastButtonY = rankHeight - buttonHeight-5; 
+
   if(page < Math.ceil(totalGroup.length/perPageMaxNum) - 1){
-	context.fillStyle = "#414A5A";
-	context.fillRect(nextButtonX, nextButtonY, buttonWidth, buttonHeight);
+	// context.fillStyle = "#414A5A";
+	// context.fillRect(nextButtonX, nextButtonY, buttonWidth, buttonHeight);
 	context_drawImage(assets.button2, nextButtonX, nextButtonY, buttonWidth, buttonHeight);
   }
   if(page > 0){
-	context.fillStyle = "#414A5A";
-	context.fillRect(lastButtonX, lastButtonY, buttonWidth, buttonHeight);
+	// context.fillStyle = "#414A5A";
+	// context.fillRect(lastButtonX, lastButtonY, buttonWidth, buttonHeight);
 	context_drawImage(assets.button1, lastButtonX, lastButtonY, buttonWidth, buttonHeight);
   }
 }
@@ -131,22 +137,22 @@ function drawByData(data, i) {
 
 let x = startX;
   //绘制底框
-  let color = i%2 == 0 ? "#232323" : "#141414";
+  let color = i%2 == 0 ? "#b47c39" : "#A8671C";
   context.fillStyle = color; //data.isMe ? "#332500" : "#272727";
   context.fillRect(startX, startY + i * preOffsetY, barWidth, barHeight);
 
-  x += getV(50);
+  x += getV(40);
   //设置字体
-  fontSize = getV(30);
+  fontSize = getV(40);
   textOffsetY = (barHeight + fontSize) / 2;
   context.font = (fontSize) + "px Arial";
   
   
   //绘制序号
   context.textAlign = "center";
-  context.fillStyle = data.index < 4 ? "#ffc000" : "#dddddd";
-  context.fillText(data.index + "", x, startY + i * preOffsetY + textOffsetY, getV(100));
-  x += getV(50);
+  context.fillStyle = data.index < 4 ? "#ffffff" : "#cccccc";
+  context.fillText(data.index + "", x, startY + i * preOffsetY + textOffsetY, getV(80));
+  x += getV(40);
   
   //绘制头像
   var img = wx.createImage();
@@ -157,21 +163,24 @@ let x = startX;
   img.src = data.avatarUrl;
 
   //绘制昵称
-   x += avatarSize + getV(20);
+   x += avatarSize + getV(10);
   context.textAlign = "left";
-  fontSize = getV(24);
+  fontSize = getV(30);
   textOffsetY = (barHeight + fontSize) / 2;
   context.font = fontSize + "px Arial";
-  context.fillStyle = "#b1b1ba";
+  context.fillStyle = "#FFFFFF";
   context.fillText(util.getStringByLength(data.nickname + "", 8), x, startY + i * preOffsetY + + textOffsetY); 
  
 
   //绘制球球背景
-  x = barWidth - getV(160);
-  context_drawImage(assets.scorebg, x, startY + i * preOffsetY + (barHeight - getV(50)) / 2, getV(150), getV(50));
+  x = barWidth - getV(230);
+  context_drawImage(assets.scorebg, x, startY + i * preOffsetY + (barHeight - getV(50)) / 2, getV(220), getV(50));
   
-  x = barWidth - getV(140);
-  context_drawImage(assets.star, x, startY + i * preOffsetY + (barHeight - getV(33)) / 2, getV(35), getV(33));
+  x = barWidth - getV(225);
+  if(clientData.key == 'coin' || clientData.key == 'coinwin')
+	context_drawImage(assets.star, x, startY + i * preOffsetY + (barHeight - getV(46)) / 2, getV(46), getV(46));
+  else
+	context_drawImage(assets.star2, x, startY + i * preOffsetY + (barHeight - getV(46)) / 2, getV(46), getV(46));
   
   //绘制球球
   // if(data.skin){ //兼容老代码，没有skin
@@ -443,6 +452,11 @@ function addOpenDataContextListener() {
         //创建并初始化
         hasCreateScene = createScene();
       }
+	  
+		rankHeight = getV(data.rankHeight);
+		perPageMaxNum = Math.floor((rankHeight - 100)/barHeight);
+	console.log(rankHeight,perPageMaxNum);
+	
 	  renderDirty = true;
 	  totalGroup = [];
       requestAnimationFrameID = requestAnimationFrame(loop);
@@ -514,6 +528,7 @@ function requestData(mainData, fun){
 			//]
 			// if(mainData.debug_log) console.log("getFriendCloudStorage=", JSON.stringify(res));
 			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+	
 			totalGroup = [];
 			for(var i = 0; i < res.data.length; i++){
 				var item = res.data[i];
@@ -534,6 +549,10 @@ function requestData(mainData, fun){
 						var vv = data[j].value.split(",");  //score + "," + time;
 						bool = true;
 						item.level = Number(vv[0]) || 0;
+						if(clientData.key == 'winrate')
+						{
+							item.level = Math.floor(item.level*1000)/10;
+						}
 						item.orderindex  = Number(vv[1]) || 0;
 					}
 				}
@@ -545,6 +564,14 @@ function requestData(mainData, fun){
 			util.sortByField(totalGroup, ["level","orderindex"], [1,0]);
 			for (let i = 0; i < totalGroup.length; i++) {
 				totalGroup[i].index = (i+1);
+				if(clientData.key == 'winrate')
+				{
+					totalGroup[i].level += '%'
+				}
+				else
+				{
+					totalGroup[i].level = util.addNumSeparator(totalGroup[i].level,2);
+				}
 			}
 
 			fun && fun(mainData);
