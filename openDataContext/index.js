@@ -551,7 +551,7 @@ function requestData(mainData, fun){
 						item.level = Number(vv[0]) || 0;
 						if(clientData.key == 'winrate')
 						{
-							item.level = Math.floor(item.level*1000)/10;
+							item.level = Math.floor(item.level*10000)/100;
 						}
 						item.orderindex  = Number(vv[1]) || 0;
 					}

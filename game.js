@@ -75,7 +75,7 @@ egret.runEgret({
     //----auto option start----
 		entryClassName: "Main",
 		orientation: "auto",
-		frameRate: 60,
+		frameRate: 30,
 		scaleMode: "fixedWidth",
 		contentWidth: 640,
 		contentHeight: 1136,

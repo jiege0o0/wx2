@@ -72,11 +72,11 @@ var egret = window.egret;
 	_proto.labelDisplay_i = function () {
 		var t = new eui.Label();
 		this.labelDisplay = t;
+		t.bold = true;
 		t.lineSpacing = 5;
 		t.size = 24;
-		t.stroke = 2;
 		t.text = "123";
-		t.textColor = 0xffffff;
+		t.textColor = 0x000000;
 		return t;
 	};
 	return Btn1Skin;
@@ -142,10 +142,10 @@ var egret = window.egret;
 	_proto.labelDisplay_i = function () {
 		var t = new eui.Label();
 		this.labelDisplay = t;
+		t.bold = true;
 		t.size = 24;
-		t.stroke = 2;
-		t.text = "123";
-		t.textColor = 0xffffff;
+		t.text = "而";
+		t.textColor = 0x000000;
 		return t;
 	};
 	return Btn2Skin;
@@ -211,10 +211,10 @@ var egret = window.egret;
 	_proto.labelDisplay_i = function () {
 		var t = new eui.Label();
 		this.labelDisplay = t;
+		t.bold = true;
 		t.size = 24;
-		t.stroke = 2;
 		t.text = "123";
-		t.textColor = 0xffffff;
+		t.textColor = 0x444444;
 		return t;
 	};
 	return Btn3Skin;
@@ -281,9 +281,8 @@ var egret = window.egret;
 		var t = new eui.Label();
 		this.labelDisplay = t;
 		t.size = 24;
-		t.stroke = 2;
 		t.text = "123";
-		t.textColor = 0xffffff;
+		t.textColor = 0x000000;
 		return t;
 	};
 	return Btn4Skin;
@@ -2577,6 +2576,7 @@ var egret = window.egret;
 	};
 	_proto._Image2_i = function () {
 		var t = new eui.Image();
+		t.scaleX = -1;
 		t.source = "arrow2_png";
 		t.x = 78;
 		t.y = 10;
@@ -2584,6 +2584,7 @@ var egret = window.egret;
 	};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
+		t.bold = true;
 		t.text = "克制";
 		t.textColor = 0xfcde83;
 		t.x = 107;
@@ -2631,6 +2632,7 @@ var egret = window.egret;
 	};
 	_proto._Image6_i = function () {
 		var t = new eui.Image();
+		t.scaleX = -1;
 		t.source = "arrow2_png";
 		t.x = 78;
 		t.y = 10;
@@ -2638,6 +2640,7 @@ var egret = window.egret;
 	};
 	_proto._Label2_i = function () {
 		var t = new eui.Label();
+		t.bold = true;
 		t.text = "克制";
 		t.textColor = 0xfcde83;
 		t.x = 107;
@@ -2685,6 +2688,7 @@ var egret = window.egret;
 	};
 	_proto._Image10_i = function () {
 		var t = new eui.Image();
+		t.scaleX = -1;
 		t.source = "arrow2_png";
 		t.x = 78;
 		t.y = 10;
@@ -2692,6 +2696,7 @@ var egret = window.egret;
 	};
 	_proto._Label3_i = function () {
 		var t = new eui.Label();
+		t.bold = true;
 		t.text = "克制";
 		t.textColor = 0xfcde83;
 		t.x = 107;
@@ -4245,15 +4250,244 @@ var egret = window.egret;
 		return t;
 	};
 	return GameUISkin;
+})(eui.Skin);generateEUI.paths['resource/skin/game/GetCoinItemSkin.exml'] = window.GetCoinItemSkin = (function (_super) {
+	__extends(GetCoinItemSkin, _super);
+	function GetCoinItemSkin() {
+		_super.call(this);
+		this.skinParts = ["goBtn","barMC","titleText","rateText","desText","addCoinText"];
+		
+		this.height = 300;
+		this.width = 280;
+		this.elementsContent = [this._Image1_i(),this._Image2_i(),this.goBtn_i(),this._Group1_i(),this.titleText_i(),this.rateText_i(),this.desText_i(),this._Group2_i()];
+	}
+	var _proto = GetCoinItemSkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.percentHeight = 100;
+		t.scale9Grid = new egret.Rectangle(9,9,11,10);
+		t.source = "bg2_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.height = 50;
+		t.left = 0;
+		t.right = 0;
+		t.scale9Grid = new egret.Rectangle(12,12,6,5);
+		t.source = "bg9_png";
+		t.top = 0;
+		return t;
+	};
+	_proto.goBtn_i = function () {
+		var t = new eui.Button();
+		this.goBtn = t;
+		t.bottom = 20;
+		t.horizontalCenter = 0;
+		t.label = "前往";
+		t.skinName = "Btn1Skin";
+		t.width = 160;
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.horizontalCenter = 0;
+		t.y = 144.66;
+		t.elementsContent = [this._Image3_i(),this.barMC_i()];
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.source = "bar_bg_png";
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.barMC_i = function () {
+		var t = new eui.Image();
+		this.barMC = t;
+		t.source = "bar2_png";
+		t.x = 2;
+		t.y = 2;
+		return t;
+	};
+	_proto.titleText_i = function () {
+		var t = new eui.Label();
+		this.titleText = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.bold = true;
+		t.horizontalCenter = 0;
+		t.lineSpacing = 5;
+		t.size = 24;
+		t.stroke = 2;
+		t.strokeColor = 0x140a00;
+		t.text = "登录第 3 天";
+		t.textAlign = "left";
+		t.textColor = 0xffffff;
+		t.verticalAlign = "middle";
+		t.y = 13;
+		return t;
+	};
+	_proto.rateText_i = function () {
+		var t = new eui.Label();
+		this.rateText = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 24;
+		t.horizontalCenter = 0;
+		t.lineSpacing = 5;
+		t.size = 20;
+		t.text = "22:33:44";
+		t.textAlign = "left";
+		t.textColor = 0xffe1a8;
+		t.verticalAlign = "middle";
+		t.y = 149.34;
+		return t;
+	};
+	_proto.desText_i = function () {
+		var t = new eui.Label();
+		this.desText = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 24;
+		t.horizontalCenter = 0;
+		t.lineSpacing = 5;
+		t.size = 20;
+		t.text = "等待好友进入";
+		t.textAlign = "left";
+		t.textColor = 0xFFE1A8;
+		t.verticalAlign = "middle";
+		t.y = 193.3;
+		return t;
+	};
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.horizontalCenter = 0;
+		t.y = 70;
+		t.elementsContent = [this._Image4_i(),this._Image5_i(),this.addCoinText_i()];
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.scale9Grid = new egret.Rectangle(28,20,26,2);
+		t.source = "border1_png";
+		t.width = 180;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Image5_i = function () {
+		var t = new eui.Image();
+		t.scaleX = 0.8;
+		t.scaleY = 0.8;
+		t.source = "icon_coin_png";
+		t.x = 4.02;
+		t.y = 2;
+		return t;
+	};
+	_proto.addCoinText_i = function () {
+		var t = new eui.Label();
+		this.addCoinText = t;
+		t.left = 45;
+		t.right = 20;
+		t.size = 24;
+		t.text = "+12345";
+		t.textAlign = "center";
+		t.textColor = 0xffd789;
+		t.y = 9;
+		return t;
+	};
+	return GetCoinItemSkin;
+})(eui.Skin);generateEUI.paths['resource/skin/game/GetCoinUISkin.exml'] = window.GetCoinUISkin = (function (_super) {
+	__extends(GetCoinUISkin, _super);
+	function GetCoinUISkin() {
+		_super.call(this);
+		this.skinParts = ["topUI","bottomUI","list","scroller"];
+		
+		this.height = 960;
+		this.width = 640;
+		this.elementsContent = [this._Image1_i(),this.topUI_i(),this.bottomUI_i(),this.scroller_i()];
+	}
+	var _proto = GetCoinUISkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.percentHeight = 100;
+		t.scale9Grid = new egret.Rectangle(16,15,7,7);
+		t.source = "bg3_png";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.topUI_i = function () {
+		var t = new TopUI();
+		this.topUI = t;
+		t.skinName = "TopUISkin";
+		t.percentWidth = 100;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.bottomUI_i = function () {
+		var t = new BottomUI();
+		this.bottomUI = t;
+		t.bottom = 0;
+		t.skinName = "BottomUISkin";
+		t.x = 0;
+		return t;
+	};
+	_proto.scroller_i = function () {
+		var t = new eui.Scroller();
+		this.scroller = t;
+		t.bottom = 100;
+		t.bounces = false;
+		t.left = 0;
+		t.right = 0;
+		t.top = 60;
+		t.viewport = this._Group1_i();
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.elementsContent = [this.list_i()];
+		return t;
+	};
+	_proto.list_i = function () {
+		var t = new eui.List();
+		this.list = t;
+		t.height = 200;
+		t.width = 200;
+		t.x = 96;
+		t.y = 96;
+		t.layout = this._TileLayout1_i();
+		return t;
+	};
+	_proto._TileLayout1_i = function () {
+		var t = new eui.TileLayout();
+		t.horizontalGap = 20;
+		t.paddingBottom = 20;
+		t.paddingLeft = 30;
+		t.paddingRight = 20;
+		t.paddingTop = 20;
+		t.requestedColumnCount = 2;
+		t.verticalGap = 20;
+		return t;
+	};
+	return GetCoinUISkin;
 })(eui.Skin);generateEUI.paths['resource/skin/game/LogItemSkin.exml'] = window.LogItemSkin = (function (_super) {
 	__extends(LogItemSkin, _super);
 	function LogItemSkin() {
 		_super.call(this);
-		this.skinParts = ["timeText","cost1","force1","myCost1","result1","cost2","force2","myCost2","result2","desText","coinText","videoBtn"];
+		this.skinParts = ["timeText","cost1","force1","myCost1","resultText1","cost2","force2","myCost2","resultText2","desText","coinText","videoBtn"];
 		
 		this.height = 410;
 		this.width = 600;
-		this.elementsContent = [this._Image1_i(),this._Group2_i(),this._Group4_i(),this._Group13_i(),this._Group14_i(),this.videoBtn_i()];
+		this.elementsContent = [this._Image1_i(),this._Group2_i(),this._Group4_i(),this._Group11_i(),this._Group12_i(),this.videoBtn_i()];
 	}
 	var _proto = LogItemSkin.prototype;
 
@@ -4389,12 +4623,12 @@ var egret = window.egret;
 		t.y = 20;
 		return t;
 	};
-	_proto._Group13_i = function () {
+	_proto._Group11_i = function () {
 		var t = new eui.Group();
 		t.horizontalCenter = 0;
 		t.y = 70;
 		t.layout = this._HorizontalLayout2_i();
-		t.elementsContent = [this._Group6_i(),this._Group9_i(),this._Group12_i()];
+		t.elementsContent = [this._Group6_i(),this._Group8_i(),this._Group10_i()];
 		return t;
 	};
 	_proto._HorizontalLayout2_i = function () {
@@ -4469,14 +4703,14 @@ var egret = window.egret;
 		t.y = 74;
 		return t;
 	};
-	_proto._Group9_i = function () {
+	_proto._Group8_i = function () {
 		var t = new eui.Group();
 		t.height = 200;
 		t.width = 200;
 		t.x = 0;
 		t.y = 0;
 		t.layout = this._VerticalLayout3_i();
-		t.elementsContent = [this._Group7_i(),this.cost1_i(),this.force1_i(),this.myCost1_i(),this._Group8_i()];
+		t.elementsContent = [this._Group7_i(),this.cost1_i(),this.force1_i(),this.myCost1_i(),this.resultText1_i()];
 		return t;
 	};
 	_proto._VerticalLayout3_i = function () {
@@ -4545,30 +4779,27 @@ var egret = window.egret;
 		t.y = 64;
 		return t;
 	};
-	_proto._Group8_i = function () {
-		var t = new eui.Group();
+	_proto.resultText1_i = function () {
+		var t = new eui.Label();
+		this.resultText1 = t;
 		t.height = 50;
-		t.width = 50;
-		t.x = 75;
-		t.y = 200;
-		t.elementsContent = [this.result1_i()];
+		t.size = 24;
+		t.text = "队伍1";
+		t.textColor = 0xffcc7a;
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 60;
+		t.y = 74;
 		return t;
 	};
-	_proto.result1_i = function () {
-		var t = new eui.Image();
-		this.result1 = t;
-		t.source = "win_icon_png";
-		t.x = 0;
-		return t;
-	};
-	_proto._Group12_i = function () {
+	_proto._Group10_i = function () {
 		var t = new eui.Group();
 		t.height = 200;
 		t.width = 200;
 		t.x = 0;
 		t.y = 0;
 		t.layout = this._VerticalLayout4_i();
-		t.elementsContent = [this._Group10_i(),this.cost2_i(),this.force2_i(),this.myCost2_i(),this._Group11_i()];
+		t.elementsContent = [this._Group9_i(),this.cost2_i(),this.force2_i(),this.myCost2_i(),this.resultText2_i()];
 		return t;
 	};
 	_proto._VerticalLayout4_i = function () {
@@ -4577,7 +4808,7 @@ var egret = window.egret;
 		t.horizontalAlign = "center";
 		return t;
 	};
-	_proto._Group10_i = function () {
+	_proto._Group9_i = function () {
 		var t = new eui.Group();
 		t.height = 55;
 		t.width = 150;
@@ -4638,23 +4869,20 @@ var egret = window.egret;
 		t.y = 64;
 		return t;
 	};
-	_proto._Group11_i = function () {
-		var t = new eui.Group();
+	_proto.resultText2_i = function () {
+		var t = new eui.Label();
+		this.resultText2 = t;
 		t.height = 50;
-		t.width = 50;
-		t.x = 75;
-		t.y = 200;
-		t.elementsContent = [this.result2_i()];
+		t.size = 24;
+		t.text = "队伍1";
+		t.textColor = 0xff6666;
+		t.verticalAlign = "middle";
+		t.verticalCenter = 0;
+		t.x = 60;
+		t.y = 74;
 		return t;
 	};
-	_proto.result2_i = function () {
-		var t = new eui.Image();
-		this.result2 = t;
-		t.source = "lose_icon_png";
-		t.x = 0;
-		return t;
-	};
-	_proto._Group14_i = function () {
+	_proto._Group12_i = function () {
 		var t = new eui.Group();
 		t.bottom = 25;
 		t.height = 40;
@@ -4791,8 +5019,9 @@ var egret = window.egret;
 	_proto._VerticalLayout1_i = function () {
 		var t = new eui.VerticalLayout();
 		t.gap = 20;
-		t.paddingBottom = 10;
+		t.paddingBottom = 20;
 		t.paddingLeft = 20;
+		t.paddingTop = 20;
 		return t;
 	};
 	_proto._Group2_i = function () {
