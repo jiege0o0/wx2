@@ -169,7 +169,7 @@ let x = startX;
   textOffsetY = (barHeight + fontSize) / 2;
   context.font = fontSize + "px Arial";
   context.fillStyle = "#FFFFFF";
-  context.fillText(util.getStringByLength(data.nickname + "", 8), x, startY + i * preOffsetY + + textOffsetY); 
+  context.fillText(util.getStringByLength(data.nickname + "", 8), x, startY + i * preOffsetY + textOffsetY); 
  
 
   //绘制球球背景
@@ -567,6 +567,10 @@ function requestData(mainData, fun){
 				if(clientData.key == 'winrate')
 				{
 					totalGroup[i].level += '%'
+				}
+				else if(clientData.key == 'level')
+				{
+					totalGroup[i].level = '第'+totalGroup[i].level+'关'
 				}
 				else
 				{

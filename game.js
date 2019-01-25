@@ -36,15 +36,15 @@ wx.cloud.init({
   
 });
 
-wx.cloud.getTempFileURL({
-  fileList: ['cloud://hange0o0-1-797611.6861-hange0o0-1-797611/aa.txt'],
-  success: res => {
-    console.log(res.fileList[0].tempFileURL)
-  },
-  fail: err => {
-    console.log(err)
-  }
-})
+// wx.cloud.getTempFileURL({
+  // fileList: ['cloud://hange0o0-1-797611.6861-hange0o0-1-797611/aa.txt'],
+  // success: res => {
+    // console.log(res.fileList[0].tempFileURL)
+  // },
+  // fail: err => {
+    // console.log(err)
+  // }
+// })
 
 
 // var a;
