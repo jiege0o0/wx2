@@ -7,7 +7,7 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
 	var rankKey = 'rank_' + event.type;
-	var max = 100;
+	var max = 50;
   var result = await db.collection(rankKey).orderBy('value', 'desc').limit(max).get();
   var arr = result.data;
   if(arr.length < max || arr[max-1].value < event.value)//要更新
@@ -54,4 +54,5 @@ exports.main = async (event, context) => {
 	  arr.push(newData);
 		return arr;
   }
+  return arr;
 }

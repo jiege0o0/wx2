@@ -5,7 +5,7 @@
  */
 
 const util = require("util.js");
-
+const core = require("core.js");
 
 
 
@@ -474,7 +474,9 @@ function addOpenDataContextListener() {
        */
       console.log('加载资源')
       preloadAssets();
-    }
+    }else if(data.command == "drawSaveData"){
+			core.wxdecode.drawSaveFun(data, null);
+		}
   });
   preloadAssets();
 }
