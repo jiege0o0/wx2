@@ -8,6 +8,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   return {
+  testVersion:0,
   isTest:false,
     event,
 	time:Date.now(),
