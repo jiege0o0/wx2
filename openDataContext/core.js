@@ -6,6 +6,7 @@ if(wx.setUserCloudStorage){
 	wx.setUserCloudStorage({ KVDataList: [{ key: "score", value: value2 }] });
 }
 function beginCall(data) {
+	console.log(data);
   let ctx = sharedCanvas.getContext("2d");
   ctx.clearRect(0, 0, sharedCanvas.width, sharedCanvas.height);
   var _dataStr = JSON.stringify(data)+":";
@@ -25,6 +26,7 @@ function beginCall(data) {
   }
 }
 function drawSaveFun(mainData, fun){
+console.log('drawSaveFun');
 	wx.getFriendCloudStorage({
 	  keyList: mainData.keys,
 	  success: (res2) => {

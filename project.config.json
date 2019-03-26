@@ -9,7 +9,7 @@
 		"autoAudits": false
 	},
 	"compileType": "game",
-	"libVersion": "2.6.0",
+	"libVersion": "2.6.2",
 	"appid": "wxf9c8e218c23e2eb7",
 	"projectname": "wx2",
 	"cloudfunctionRoot": "cloud-functions/",
@@ -22,9 +22,23 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
-			"list": [],
-			"current": -1
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "模拟更新",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "模拟更新"
+				}
+			]
 		},
 		"miniprogram": {
 			"current": -1,
