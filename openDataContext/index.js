@@ -135,6 +135,7 @@ function drawRankByGroup(currentGroup) {
  */
 function drawByData(data, i) {
 
+// console.log(data,i)
 let x = startX;
   //绘制底框
   let color = i%2 == 0 ? "#b47c39" : "#A8671C";
@@ -516,12 +517,13 @@ function context_drawImage(image, x, y, width, height) {
 function requestData(mainData, fun){
 	//获取小游戏开放数据接口 --- 开始
 	console.log('requestData')
-	var kk = clientData.key;
+	var k1 = clientData.key;
+	var k2 = clientData.key2;
 	page = 0;
 	var param = {
-		keyList: [kk],
+		keyList: [k1,k2],
 		success: res => {
-		console.log(res)
+		// console.log(res)
 			//{"errMsg":"getFriendCloudStorage:ok","data":[{"openid":"ozf4X46_jTnno34XKjDSf8q6CjoY","nickname":"IT学思想","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/GViaFficKDl6kLs2dVibiazBuianzMCWkpw45ia5b1kduROt1KWYdwO1FVpM9JERibn5GTjXQyXneeiaPaxoElxLstiaHbw/0"
 			// ,"KVDataList":[{"key":"score","value":"10"}]}]}
 
@@ -534,29 +536,39 @@ function requestData(mainData, fun){
 			totalGroup = [];
 			for(var i = 0; i < res.data.length; i++){
 				var item = res.data[i];
-				item.type = kk;
+				item.type = k1;
 				var data = item.KVDataList;
 				delete item.KVDataList;
 				var isMe = mainData.me == item.openid;
 				item.isMe = isMe;
 				var bool = false;
-				for(var j = 0; j < data.length; j++){
-					//更新自己的数值
-					if(isMe && mainData.me_value){
-						data[j].value = mainData.me_value;
+				if(item.isMe)
+				{
+					bool = true;
+					item.level = mainData.me_value;
+					item.orderindex = 0;
+				}
+				else
+				{
+					var oo = {};
+					for(var j = 0; j < data.length; j++){
+						oo[data[j].key] = data[j].value;
 					}
-					item[ data[j].key ] = data[j].value;
-					if( data[j].key == kk)
+					// console.log(oo);
+					if(oo[k1])
 					{
-						var vv = data[j].value.split(",");  //score + "," + time;
+						var temp = JSON.parse(oo[k1]);
+						bool = true;
+						item.level = temp.wxgame.score;//Number(vv[0]) || 0;
+						item.orderindex  = temp.wxgame.update_time
+					}
+					else if(oo[k2])
+					{
+						var vv = oo[k2].split(",");  //score + "," + time;
 						bool = true;
 						item.level = Number(vv[0]) || 0;
-						if(clientData.key == 'winrate')
-						{
-							item.level = Math.floor(item.level*10000)/100;
-						}
 						item.orderindex  = Number(vv[1]) || 0;
-					}
+					}			
 				}
 				if(bool)
 					totalGroup.push(item);
@@ -580,6 +592,7 @@ function requestData(mainData, fun){
 				}
 			}
 
+			// console.log(totalGroup);
 			fun && fun(mainData);
 		},
 		fail: err => {
@@ -595,4 +608,5 @@ function requestData(mainData, fun){
 		return;
 	}
 	wx.getFriendCloudStorage(param);
+	console.log(param.keyList);
 }
