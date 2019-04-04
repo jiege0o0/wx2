@@ -7,6 +7,9 @@
 		"downloadFile": 5000
 	},
 	"cloud": true,
+	"navigateToMiniProgramAppIdList": [
+		"wxf9c8e218c23e2eb7"
+	],
 	"subpackages": [
 		{
 			"name": "assets2",

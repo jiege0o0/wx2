@@ -16,7 +16,7 @@ if(window.RES && RES.processor) {
     require('./library/sound.js');
     require('./library/binary.js');
 }
-
+require('./utils/wlad_sdk_game.min.js');
 // var fundebug = require("./library/fundebug.0.4.0.min.js");
 // fundebug.init({
 //   apikey: "9a69bba39a41796ebba788ca6bde75254548c7d076a470c01b735d2d7b9037ac",

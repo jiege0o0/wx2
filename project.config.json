@@ -10,8 +10,8 @@
 	},
 	"compileType": "game",
 	"libVersion": "2.6.0",
-	"appid": "wxf9c8e218c23e2eb7",
-	"projectname": "wx2",
+	"appid": "wxe066524f2972cb1a",
+	"projectname": "wx3",
 	"cloudfunctionRoot": "cloud-functions/",
 	"condition": {
 		"search": {
