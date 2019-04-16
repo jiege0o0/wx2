@@ -5,7 +5,6 @@
  */
 
 const util = require("util.js");
-const core = require("core.js");
 
 
 
@@ -16,7 +15,6 @@ const core = require("core.js");
  */
 const assetsUrl = {
   scorebg: "openDataContext/assets/scorebg.png",
-  star: "openDataContext/assets/chapter_star4.png",
   star2: "openDataContext/assets/chapter_star3.png",
   button1: "openDataContext/assets/page_last.png",
   button2: "openDataContext/assets/page_next.png"
@@ -77,7 +75,7 @@ function init() {
 	canvasHeight = data.windowHeight;
 
 	wx_scale = stageWidth/640
-	rankWidth =  getV(620);
+	rankWidth =  getV(560);
 	
 	barWidth = rankWidth;
 	barHeight = getV(100);
@@ -166,7 +164,7 @@ let x = startX;
   //绘制昵称
    x += avatarSize + getV(10);
   context.textAlign = "left";
-  fontSize = getV(30);
+  fontSize = getV(22);
   textOffsetY = (barHeight + fontSize) / 2;
   context.font = fontSize + "px Arial";
   context.fillStyle = "#FFFFFF";
@@ -178,9 +176,6 @@ let x = startX;
   context_drawImage(assets.scorebg, x, startY + i * preOffsetY + (barHeight - getV(50)) / 2, getV(220), getV(50));
   
   x = barWidth - getV(225);
-  if(clientData.key == 'coin' || clientData.key == 'coinwin')
-	context_drawImage(assets.star, x, startY + i * preOffsetY + (barHeight - getV(46)) / 2, getV(46), getV(46));
-  else
 	context_drawImage(assets.star2, x, startY + i * preOffsetY + (barHeight - getV(46)) / 2, getV(46), getV(46));
   
   //绘制球球
@@ -518,10 +513,9 @@ function requestData(mainData, fun){
 	//获取小游戏开放数据接口 --- 开始
 	console.log('requestData')
 	var k1 = clientData.key;
-	var k2 = clientData.key2;
 	page = 0;
 	var param = {
-		keyList: [k1,k2],
+		keyList: [k1],
 		success: res => {
 		// console.log(res)
 			//{"errMsg":"getFriendCloudStorage:ok","data":[{"openid":"ozf4X46_jTnno34XKjDSf8q6CjoY","nickname":"IT学思想","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/GViaFficKDl6kLs2dVibiazBuianzMCWkpw45ia5b1kduROt1KWYdwO1FVpM9JERibn5GTjXQyXneeiaPaxoElxLstiaHbw/0"
@@ -531,6 +525,19 @@ function requestData(mainData, fun){
 			//{"key":score,"value":exp#level}
 			//]
 			// if(mainData.debug_log) console.log("getFriendCloudStorage=", JSON.stringify(res));
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
+			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
 			// res.data.push(JSON.parse(JSON.stringify(res.data[0])))
 	
 			totalGroup = [];
@@ -562,13 +569,13 @@ function requestData(mainData, fun){
 						item.level = temp.wxgame.score;//Number(vv[0]) || 0;
 						item.orderindex  = temp.wxgame.update_time
 					}
-					else if(oo[k2])
-					{
-						var vv = oo[k2].split(",");  //score + "," + time;
-						bool = true;
-						item.level = Number(vv[0]) || 0;
-						item.orderindex  = Number(vv[1]) || 0;
-					}			
+					// else if(oo[k2])
+					// {
+						// var vv = oo[k2].split(",");  //score + "," + time;
+						// bool = true;
+						// item.level = Number(vv[0]) || 0;
+						// item.orderindex  = Number(vv[1]) || 0;
+					// }			
 				}
 				if(bool)
 					totalGroup.push(item);
@@ -578,18 +585,18 @@ function requestData(mainData, fun){
 			util.sortByField(totalGroup, ["level","orderindex"], [1,0]);
 			for (let i = 0; i < totalGroup.length; i++) {
 				totalGroup[i].index = (i+1);
-				if(clientData.key == 'winrate')
-				{
-					totalGroup[i].level += '%'
-				}
-				else if(clientData.key == 'level')
-				{
-					totalGroup[i].level = '第'+totalGroup[i].level+'关'
-				}
-				else
-				{
-					totalGroup[i].level = util.addNumSeparator(totalGroup[i].level,2);
-				}
+				// if(clientData.key == 'winrate')
+				// {
+					// totalGroup[i].level += '%'
+				// }
+				// else if(clientData.key == 'level')
+				// {
+					totalGroup[i].level = ''+totalGroup[i].level+'个'
+				// }
+				// else
+				// {
+					// totalGroup[i].level = util.addNumSeparator(totalGroup[i].level,2);
+				// }
 			}
 
 			// console.log(totalGroup);
