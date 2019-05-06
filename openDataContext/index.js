@@ -591,7 +591,7 @@ function requestData(mainData, fun){
 				// }
 				// else if(clientData.key == 'level')
 				// {
-					totalGroup[i].level = ''+totalGroup[i].level+'个'
+					totalGroup[i].level = ''+totalGroup[i].level+' 个'
 				// }
 				// else
 				// {
