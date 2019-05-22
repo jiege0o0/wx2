@@ -13,5 +13,8 @@
 			"root": "resource/game_assets2"
 		}
 	],
+	"navigateToMiniProgramAppIdList": [
+		"wxe066524f2972cb1a"
+	],
 	"openDataContext": "openDataContext"
 }
