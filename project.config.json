@@ -9,7 +9,7 @@
 		"autoAudits": false
 	},
 	"compileType": "game",
-	"libVersion": "2.6.0",
+	"libVersion": "2.7.0",
 	"appid": "wxe066524f2972cb1a",
 	"projectname": "wx3",
 	"cloudfunctionRoot": "cloud-functions/",
