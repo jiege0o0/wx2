@@ -17,6 +17,7 @@ if(window.RES && RES.processor) {
     require('./library/binary.js');
 }
 require('./utils/wlad_sdk_game.min.js');
+require('./utils//ald-game.js')
 
 
 // var fundebug = require("./library/fundebug.0.4.0.min.js");
